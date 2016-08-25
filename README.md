@@ -1,0 +1,1 @@
+Petit programme pour lire les scripts de tutoriel et produire des fichiers HTML facilitant leur réalisation.
