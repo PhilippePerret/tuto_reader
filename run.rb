@@ -9,6 +9,5 @@ tuto = Tuto.new
 tuto.script.path = '/Users/philippeperret/Library/Mobile Documents/com~apple~CloudDocs/ECRITURE/Tutoriels/Feuilles-de-style/PLAN_GENERAL.TXT'
 
 # Pour parser le script
-# tuto.script.parse
-
+tuto.script.parse
 tuto.reader.build.open
