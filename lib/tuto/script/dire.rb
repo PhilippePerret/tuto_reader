@@ -14,13 +14,9 @@ class Script
 
   def javascript_phrases
     @javascript_phrases ||= begin
+      require 'json'
       '[' + phrases_a_dire.collect do |line|
-        line.real.
-          gsub(/\*(.*?)\*/, '<strong>\1</strong>').
-          gsub(/\b_(.*?)_\b/, '<em>\1</em>').
-          gsub(/"/, '\"').
-          gsub(/\./, '.<br>').
-          gsub(/…/, '.<br>[TEMPS]</br>').inspect
+        {line_text: line.to_js, line_action: line.with_action_to_js, line_index: line.index}.to_json
       end.join(', ') + ']'
     end
   end

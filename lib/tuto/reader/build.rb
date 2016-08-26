@@ -24,7 +24,7 @@ class Reader
     '<head>'            +
       balise_encoding   +
       balise_title      +
-      balise_javascript +
+      # balise_javascript +
       balise_css        +
     '</head>'
   end
@@ -34,7 +34,7 @@ class Reader
       div_reader        +
       div_infos         +
       div_boutons       +
-    '</body>'
+    '</body>' + balise_javascript
   end
   def foot
     ''
@@ -65,13 +65,16 @@ class Reader
   def div_infos
     '<div id="infos">' +
       '<span>Phrase : <span id="index_phrase"></span> (<span id="duree_phrase"></span>)</span>' +
+      'Pour éditer la phrase courante : <span id="edit_link"></span>' +
     '</div>'
   end
   def div_boutons
     '<div id="boutons">'+
-      '<input type="button" value="-" onclick="decrease_speed()" />'        +
-      '<span id="speed"><script>document.write(speed);</script></span>'     +
-      '<input type="button" value="+" onclick="increase_speed()" />'        +
+      '<div id="div_speed">' +
+        '<span id="speed">10</span>'     +
+        '<input type="button" value="-" onclick="decrease_speed()" />'        +
+        '<input type="button" value="+" onclick="increase_speed()" />'        +
+      '</div>' +
       '<input type="button" value="⏪" onclick="quick_backward()" />'        +
       '<input type="button" id="btn_stop" value="⏹" onclick="stop()" style="visibility:hidden;" />'   +
       '<input type="button" id="btn_start" value="⏺" onclick="start()" />'   +

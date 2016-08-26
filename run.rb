@@ -10,4 +10,6 @@ tuto.script.path = '/Users/philippeperret/Library/Mobile Documents/com~apple~Clo
 
 # Pour parser le script
 tuto.script.parse
-tuto.reader.build.open
+# Pour construire le lecteur de tutoriel
+tuto.reader.build
+tuto.reader.open

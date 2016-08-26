@@ -79,12 +79,21 @@ body
   div#boutons
     text-align  : right
     position    : fixed
+    width       : 500px
     bottom      : 0
     right       : 0
     border      : 1px dashed green
+    padding     : 0.5em 2em
+    background-color  : #303030
+    color             : white
+
+    div#div_speed
+      float       : left
+      span#speed
 
     input[type="button"]
       background-color    : inherit
+      color               : inherit
       border              : 0 none
       font-size           : 29pt
       padding             : 0
@@ -104,6 +113,7 @@ body
     color             : white
     padding           : 0.5em 1em
     font-size         : 12pt
+    min-width         : 300px
     SASS
   end
 
