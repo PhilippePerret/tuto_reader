@@ -8,7 +8,7 @@ class Tuto
 class Script
 
   def parse
-    puts "-> parse"
+    @has_been_parsed && return
     prev_line = nil
     lines.each do |line|
       # line est une instance Tuto::Script::Line
@@ -23,7 +23,7 @@ class Script
       end
       prev_line = line
     end
-    puts "<- parse"
+    @has_been_parsed = true
   end
 
 

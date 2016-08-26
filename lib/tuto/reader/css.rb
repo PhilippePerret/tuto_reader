@@ -16,7 +16,10 @@ class Reader
     require 'sass'
     data_compilation = { line_comments: false, style: :compressed, syntax: :sass }
     Sass.compile(self.sass, data_compilation) +
+    Sass.compile(self.sass_top_boutons, data_compilation) +
+    Sass.compile(self.sass_action, data_compilation) +
     Sass.compile(self.sass_reader, data_compilation) +
+    Sass.compile(self.sass_div_audio, data_compilation) +
     Sass.compile(self.sass_infos, data_compilation) +
     Sass.compile(self.sass_boutons, data_compilation)
   end
@@ -26,8 +29,25 @@ class Reader
     <<-SASS
 body
   position    : relative
-  // width       : 800px
   font-size   : 17pt
+  background-color  : #3e3e3e
+  color             : white
+  padding           : 0
+  margin            : 0
+
+  h1
+    background-color    : black
+    color               : white
+    font-weight         : normal
+    font-size           : 18pt
+    padding             : 4px 24px
+    margin              : 0
+
+    span#state
+      float       : right
+      color       : #00ff00
+      font-size   : 14.7pt
+      margin-top  : 6px
 
   span#speed
     display     : inline-block
@@ -40,36 +60,70 @@ body
     SASS
   end
 
+  def sass_top_boutons
+    <<-SASS
+body
+  div#top_boutons
+    text-align  : right
+    SASS
+  end
+  def sass_action
+    <<-SASS
+div#action
+  margin        : 0
+  padding       : 1
+  font-family   : Courier
+  font-size     : 12pt
+  padding       : 0 1em
+    SASS
+  end
   def sass_reader
     <<-SASS
 body
   div#reader
-    height  : 180px
-    min-height  : 180px
-    max-height  : 180px
     font-size   : 26pt
     min-width   : 100%
-    width       : 100%
+    width       : 95%
     position    : absolute
-    border      : 1px dashed green
+    // border      : 1px dashed green
     top         : 100px
+    background-color    : white
+    padding     : 0.5em
 
     div#reader_curr_phrase
       font-weight   : bold
       color         : blue
       font-size     : 1.2em
       height        : auto
-      border        : 1px dashed red
+      // border        : 1px dashed red
       width         : 100%
+      margin        : 1em 0
     div#reader_prev_phrase
-      bottom        : 100px
-      height        : auto
       width         : 100%
       color         : #999
     div#reader_next_phrase
-      height        : auto
       color         : #CCC
       width         : 100%
+
+    SASS
+  end
+  def sass_div_audio
+    <<-SASS
+div#div_audio
+  position    : fixed
+  bottom      : 0
+  left        : 0
+  padding     : 0.5em 1em
+  background-color  : black
+  color             : white
+
+  input[type="button"]
+    background-color    : inherit
+    color               : inherit
+    border              : 0 none
+    font-size           : 29pt
+    padding             : 0
+
 
     SASS
   end
@@ -82,7 +136,7 @@ body
     width       : 500px
     bottom      : 0
     right       : 0
-    border      : 1px dashed green
+    //border      : 1px dashed green
     padding     : 0.5em 2em
     background-color  : #303030
     color             : white
@@ -97,7 +151,7 @@ body
       border              : 0 none
       font-size           : 29pt
       padding             : 0
-      SASS
+    SASS
 
   end
   # /sass_boutons

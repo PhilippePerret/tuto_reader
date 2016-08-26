@@ -12,7 +12,9 @@ class Reader
 
   def all_js
     require 'erb'
-    Dir["#{folder_js}/**/*.js"].collect do |m|
+    jss = Dir["#{folder_js}/first_required/**/*.js"]
+    jss += Dir["#{folder_js}/required/**/*.js"]
+    jss.uniq.collect do |m|
       codejs = File.open(m, 'rb'){|f| f.read.force_encoding('utf-8')}
       ERB.new(codejs).result()
     end.join("\n")

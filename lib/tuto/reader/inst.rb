@@ -21,20 +21,13 @@ class Reader
     `open -a Firefox "#{path}"`
   end
 
-  def options
-    @options ||= begin
-      {
-          titre: "Tuto Reader"
-      }
-    end
-  end
-
   # Chemin d'accès au fichier principal créé
   def path
     @path ||= begin
       File.join(tuto.script.folder, 'tuto_reader.html')
     end
   end
+
 
 
 end #/Reader

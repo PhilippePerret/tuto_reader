@@ -23,7 +23,7 @@ class Line
   def initialize script, raw_line, index_line
     @script = script
     @raw    = raw_line
-    @index  = index_line
+    @index  = index_line + 1
   end
 
   # {Fixnum} Le retrait de la ligne. On le calcule simplement en

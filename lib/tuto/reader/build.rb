@@ -24,15 +24,17 @@ class Reader
     '<head>'            +
       balise_encoding   +
       balise_title      +
-      # balise_javascript +
       balise_css        +
     '</head>'
   end
   def body
     '<body>'            +
       div_titre         +
+      div_top_boutons   +
+      div_action        +
+      div_audio         +
       div_reader        +
-      div_infos         +
+      # div_infos         + # remplacé par les boutons audio
       div_boutons       +
     '</body>' + balise_javascript
   end
@@ -52,9 +54,25 @@ class Reader
   # ---------------------------------------------------------------------
 
   def div_titre
-    "<h1>Tuto reader pour : </h1>"
+    "<h1><span id='state'></span>Tuto reader pour : </h1>"
   end
 
+  def div_top_boutons
+    '<div id="top_boutons">'+
+      '<input id="btn_edit_phrase" type="button" onclick="edit_phrase_courante()" value="Édit phrase courante" style="visibility:hidden;" />' +
+    '</div>'
+  end
+  def div_action
+    '<div id="action">' +
+    '</div>'
+  end
+  def div_audio
+    '<div id="div_audio">'+
+      '<audio id="actions_audio" preload="auto" src="fichier_voix_actions.mp4" type="audio/mp4">Pas de lecteur audio dans ce navigateur. Utiliser plutôt Firefox.</audio>' +
+      '<input id="btn_audio_stop" type="button" value="⏹" onclick="stop_action_audio()" />' +
+      '<input id="btn_audio_play" type="button" value="⏺" onclick="start_action_audio()" />' +
+    '</div>'
+  end
   def div_reader
     '<div id="reader">' +
       '<div id="reader_prev_phrase">La phrase précédente s’affichera ici</div>' +
@@ -65,7 +83,6 @@ class Reader
   def div_infos
     '<div id="infos">' +
       '<span>Phrase : <span id="index_phrase"></span> (<span id="duree_phrase"></span>)</span>' +
-      'Pour éditer la phrase courante : <span id="edit_link"></span>' +
     '</div>'
   end
   def div_boutons
@@ -75,10 +92,10 @@ class Reader
         '<input type="button" value="-" onclick="decrease_speed()" />'        +
         '<input type="button" value="+" onclick="increase_speed()" />'        +
       '</div>' +
-      '<input type="button" value="⏪" onclick="quick_backward()" />'        +
+      '<input type="button" id="btn_backward" value="⏪" onclick="quick_backward()" />'        +
       '<input type="button" id="btn_stop" value="⏹" onclick="stop()" style="visibility:hidden;" />'   +
       '<input type="button" id="btn_start" value="⏺" onclick="start()" />'   +
-      '<input type="button" value="⏩" onclick="quick_forward()" />'        +
+      '<input type="button" id="btn_forward" value="⏩" onclick="quick_forward()" />'        +
     '</div>'
   end
 

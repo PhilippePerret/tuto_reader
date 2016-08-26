@@ -20,7 +20,7 @@ class Line
     if with_action
       with_action.to_js
     else
-      'null'
+      nil
     end
   end
 end #/Line
