@@ -69,6 +69,7 @@ class Reader
   def div_audio
     '<div id="div_audio">'+
       '<audio id="actions_audio" preload="auto" src="fichier_voix_actions.mp4" type="audio/mp4">Pas de lecteur audio dans ce navigateur. Utiliser plutôt Firefox.</audio>' +
+      '<span>Actions à exécuter (audio) : </span>' +
       '<input id="btn_audio_stop" type="button" value="⏹" onclick="stop_action_audio()" />' +
       '<input id="btn_audio_play" type="button" value="⏺" onclick="start_action_audio()" />' +
     '</div>'

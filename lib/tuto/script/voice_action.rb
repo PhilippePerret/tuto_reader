@@ -5,9 +5,11 @@ class Script
   #
   def build_voice_file
     self.parse
-    puts "Fabrication du fichier voix des action"
+    log "Fabrication du fichier voix des action…"
     File.unlink path_audio_file if File.exist? path_audio_file
-    speech = phrases_a_faire.collect{|line| line.real}.join("[[slnc 4000]]")
+    speech = phrases_a_faire.collect do |line|
+      line.real.gsub(/\./, '. [[slnc 1500]]')
+    end.join("[[slnc 4000]]")
     speech += "[[slnc 4000]]FIN"
     `say -v "#{tuto.reader.options[:voice]}" -r #{tuto.reader.options[:voice_rate]} -o "#{path_audio_file}" #{speech.inspect}`
   end

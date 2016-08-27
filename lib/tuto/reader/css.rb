@@ -82,8 +82,9 @@ div#action
 body
   div#reader
     font-size   : 26pt
-    min-width   : 100%
-    width       : 95%
+    width       : 90%
+    margin-left   : 1em
+    margin-right  : 1em
     position    : absolute
     // border      : 1px dashed green
     top         : 100px

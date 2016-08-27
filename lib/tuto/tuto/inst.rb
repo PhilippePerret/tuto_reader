@@ -9,17 +9,21 @@ class Tuto
     @reader ||= Reader.new(self)
   end
 
-  def make_reader_and_open
+  def make_reader
     self.script.parse
+    self.script.build_voice_file
     self.reader.build
+  end
+
+  def open_reader
     self.reader.open
   end
 
   def say_actions
-    self.script.parse
-    self.script.phrases_a_faire.each do |line|
-      `say "#{line.real}"`
-    end
+    # cmd = "say -f '#{self.script.path_audio_file}'"
+    # log "Run command : #{cmd}"
+    # log `#{cmd}`
+    `open #{self.script.path_audio_file.gsub(/ /,'\\ ')}`
   end
 
 end #/Tuto

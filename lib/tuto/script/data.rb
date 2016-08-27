@@ -1,7 +1,7 @@
 class Tuto
 class Script
 
-  # Chemin d'accès au script
+  # Chemin d'accès au script du tutoriel
   attr_accessor :path
 
   # Toutes les instances {Tuto::Script::Line} des lignes du script du
@@ -16,6 +16,15 @@ class Script
 
   def raw_code
     @raw_code ||= File.open(path,'rb'){|f| f.read.force_encoding('utf-8')}
+  end
+
+  def path_valide?
+    if (res = File.exist? path)
+      log "Le fichier `#{path}' existe."
+    else
+      puts "# FICHIER INEXISTANT : #{path}"
+    end
+    res
   end
 
   # Le dossier du script du tutoriel
