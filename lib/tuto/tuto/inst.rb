@@ -20,10 +20,10 @@ class Tuto
   end
 
   def say_actions
-    # cmd = "say -f '#{self.script.path_audio_file}'"
-    # log "Run command : #{cmd}"
-    # log `#{cmd}`
-    `open #{self.script.path_audio_file.gsub(/ /,'\\ ')}`
+    puts "\n\nTaper CTRL C pour interrompre.\n\n"
+    cmd = "say --interactive -f '#{self.script.path_audio_text}'"
+    log "Run command : #{cmd}"
+    log `#{cmd}`
   end
 
 end #/Tuto
